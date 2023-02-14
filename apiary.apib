@@ -1,0 +1,74 @@
+FORMAT: 1A
+HOST: https://polls.apiblueprint.org/
+
+# Odeme
+
+Polls is a simple API allowing consumers to view polls and vote in them.
+
+## Questions Collection [/questions]
+
+### List All Questions [GET]
+
++ Response 200 (application/json)
+
+        {
+                "UrunListesi":[
+                {
+                  "ID": 1,
+                  "Kime": "Onur",
+                  "Tutar": "100",
+                  "ParaBirimi": "TL",
+                  "OdemeKanali": "Ataşehir'den verildi"
+                 
+                },{
+                  "ID": 2,
+                  "Kime": "Mine",
+                  "Tutar": "10000",
+                  "ParaBirimi": "TL",
+                  "OdemeKanali": "Kadıköy'den verildi"
+                  
+                },{
+                  "ID": 3,
+                  "Kime": "Pınar",
+                  "Tutar": "20000",
+                  "ParaBirimi": "TL",
+                  "OdemeKanali": "Zeytinburnu'ndan verildi"
+                  
+                }
+               
+                ]  
+               
+            }
+       
+
+### Yeni Urun [POST]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        {
+                "AdID": 1,
+                  "UrunAdi": "KalemTraş",
+                  "Kodu": "KTRŞ25",
+                  "Fiyati": "25",
+                  "ParaBirimi": "DOLAR",
+                  "StokAdeti": "20"
+                  
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                 "result": "Success",
+                 "message": "Kayıt işleminiz başarıyla yapılmıştır",
+            }
